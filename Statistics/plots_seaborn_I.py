@@ -1,7 +1,14 @@
+
+"""
+File: plots_seaborn.py
+Source: https://theoryandpractice.org/stats-ds-book/distributions/visualize_marginals.html
+-------------------
+Various plots to visualize the distribution of bivariate random variables.
+"""
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-sns.__version__ # check version, need 0.11.0 or greater
 penguins = sns.load_dataset("penguins")
 
 # Use JointGrid directly to draw a custom plot

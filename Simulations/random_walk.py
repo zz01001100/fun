@@ -1,25 +1,25 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Parameters
+# Define Parameters
 start_price = 100
 n_days = 1825
 price_path = np.array([start_price])
 
-# Random walk simulation
+# Simulate random walk
 for i in range(n_days):
     single_num = np.random.choice([1, -1])
     random_walk = price_path[-1] + single_num
     price_path = np.append(price_path, random_walk)
 
-# Plot
+# Plot results
 plt.plot(price_path)
 plt.title('A Random Walk')
 plt.xlabel('Time Period')
 plt.ylabel('Price')
 plt.show()
 
-# 4. Define simulate_walk(start_price, n_days)
+# 4. Define random walk as a function
 
 def simulate_walk(start_price, n_days):
     price_path = np.array([start_price])
