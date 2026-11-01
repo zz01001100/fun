@@ -1,0 +1,183 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[
+    left=2.15cm,
+    right=2.15cm,
+    top=1.90cm,
+    bottom=1.90cm
+]{geometry}
+
+\title{Introduction to Statistical Learning in Python}
+\author{Leroy Zahno}
+\date{Autumn Semester 2026}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{center}
+    {\LARGE \@title \par}
+    \vspace{1em}
+    {\large \@author \par}
+    \vspace{1em}
+    {\large \@date \par}
+  \end{center}
+}
+\makeatother
+
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{Solution}
+\newtheorem{solution}{Solution}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+% MATHEMATICAL NOTATION ------------
+
+\section{Mathematical Notation}
+
+\begin{definition}[Signum Function] The signum function is a mathematical function that extracts the sign of a real number. For any $x \in \mathbb{R}$, it is formally defined as:
+
+\begin{equation} 
+\text{sgn}(x) = 
+	\begin{cases} 	
+		1, & \text{if } x > 0 \\ 
+		0, & \text{if } x = 0 \\ 
+		-1, & \text{if } x < 0 
+	\end{cases} 
+\end{equation}
+
+\end{definition}
+
+\begin{definition}[Supremum]
+Let \(S\) be a non-empty subset of the real numbers \(\mathbb{R}\). A real number \(b\) is called the supremum of \(S\), denoted by \(b = \sup(S)\), if it has an upper bound, i.e. for every \(x \in S, x \leq b \); and it needs a least lower bound, i.e. if \(c\) is any upper bound of \(S\), meaning \(x \leq c \text{ for all } x \in S,\) then \(b \leq c.\) Equivalently, \(b = \sup(S)\) if and only if \(b\) is an upper bound of \(S\), and for every \(\varepsilon > 0\), there exists some \(x \in S\) such that \(x > b - \varepsilon.\)
+\end{definition}
+
+% TO DO ------------------------
+
+\section{To Do}
+
+\begin{enumerate}
+	\item Conditional variance, var\((r_t|\mathcal{F}_s)\)
+	\item Kernel stuff
+\end{enumerate}
+
+% STATISTICAL LEARNING ------------
+
+\section{Statistical Learning}
+
+\begin{definition}[Bootstrapping]
+Bootstrapping is a way of assessing the accuracy of a parameter estimate or a prediction.
+\end{definition}
+
+\begin{definition}[Bagging]
+Suppose we fit a model to our training data $\mathbf{Z}=\{(x_1,y_1),(x_2,y_2),...,(x_N,y_N)\}$, obtaining the prediction $\hat{f}(x)$ at input $x$. Bootstrap aggregation or bagging averages this prediction over a collection of bootstrap samples, thereby reducing its variance. We can also say that it is a technique for reducing the variance of an estimated prediction function.
+\end{definition}
+
+\begin{definition}[Tree-based methods]
+Tree based methods partition the feature space into a set of rectangles, and then fit a simple model (like a constant) in each one.
+\end{definition}
+
+\begin{definition}[Classification]
+Classification is a process for predicting qualitative (or categorical) responses such as eye color or socioeconomic status. An example of a classification problem could be: A person arrives at the emergency room with a set of symptoms that could possibly be attributed to one of three medical conditions. Which of the three conditions does the individual have?
+\end{definition}
+
+\begin{definition}[Classification vs. Regression]
+Classification and regression are both supervised learning methods in machine learning. The main difference is the output type: classification predicts discrete categories or labels (e.g., "spam" or "not spam"),  while regression predicts continuous numerical values (e.g., house price or temperature). For regression, we simply fit the same regression tree many times to bootstrap-sampled versions of the training data, and average the result. For classification, a committee of trees each cast a vote for the predicted class.
+\end{definition}
+
+\begin{definition}[Weak learners]
+Weak learners are models that are only slightly better than random guessing, such as small decision trees.
+\end{definition}
+
+\begin{definition}[Splines]
+A spline is a flexible, piecewise polynomial function used to model non-linear relationships between variables. Instead of fitting a single high-degree polynomial across an entire dataset, a spline divides the data range into segments using points called knots and fits smooth polynomial curves within each segment.
+\end{definition}
+
+\begin{definition}[Decision Trees]
+Decision Trees are a non-parametric supervised learning method used for classification and regression. The goal is to create a model that predicts the value of a target variable by learning simple decision rules inferred from the data features.
+\end{definition}
+
+\begin{definition}[Random forests]
+Random forests is a substantial modification of bagging that builds a large collection of de-correlated trees, and then averages them. The idea in random forests (Algorithm 15.1) is to improve the variance reduction of bagging by reducing the correlation between the trees, without increasing the variance too much. This is achieved in the tree-growing process through random selection of the input variables.
+\end{definition}
+
+\begin{definition}[Supervised learning]
+Supervised learning is the machine learning task of inferring a function that maps an input to an output based on example input–output pairs. Depending on whether the output is a continuous variable or a categorical variable, the supervised learning can be further divided into two types: Regression or Classification.
+\end{definition}
+
+\begin{definition}[Categorical Variable]
+A categorical variable is a variable that can take one of a finite or countable number of distinct categories or labels. The categories represent different classes rather than numerical quantities. In supervised learning, a categorical output variable defines a classification problem.
+\end{definition}
+
+\begin{definition}[Regression and classification trees]
+Regression and classification trees partition the space of all joint predictor variable values into disjoint regions $R_j,j =1,2,...,J$ as represented by the terminal nodes of the tree.
+\end{definition}
+
+\begin{definition}[Boosted tree model]
+A boosted tree model is a sum of such regression and classification trees.
+\end{definition}
+
+\begin{definition}[True train, true test, prediction and prediction on train]
+True train and true test are the actual, real-world target values in your data sets. Prediction and prediction on train are the model's guesses for those data sets. \textit{True train} describes the real target labels or values inside your training data set. \textit{True test} describes the real target labels or values inside your unseen test or validation data set. \textit{Prediction} describes the model's estimated output when it looks at new, unseen data (the test set). \textit{Prediction on train} describes the model's estimated output when it looks back at the data it already learned from.
+\end{definition}
+
+\begin{definition}[ARIMA, SARIMA, and SARIMAX]
+These are popular statistical methods used to analyze and forecast data points tracked over time. ARIMA handles basic trends, SARIMA adds support for repeating seasonal patterns, and SARIMAX further includes external environmental variables to improve prediction accuracy.
+\end{definition}
+
+\begin{definition}[ARIMA]
+ARIMA stands for Autoregressive Integrated Moving Average and it's a technique for time series analysis and for forecasting possible future values of a time series.
+\end{definition}
+
+\begin{definition}[t-statistic]
+A t-statistic measures the number of standard deviations that $\hat{\beta}_1$ is away from $0$. The t-distribution has a bell shape and for values of n greater than approximately 30 it is quite similar to the standard normal distribution.
+\end{definition}
+
+\begin{definition}[p-value]
+A p-value is the probability of observing any number equal to $|t|$ or larger in absolute value, assuming that $\hat{\beta}_1=0.$
+\end{definition}
+
+\begin{definition}[Konfidenzintervall]
+Das Konfidenzintervall ist das Intervall, das den wahren, jedoch unbekannten Mittelwert einer Grundgesamtheit $\mu$ mit Wahrscheinlichkeit $1-\alpha$ abdeckt. Wir sprechen also z.B. von einem $95\%$ Konfidenzintervall, wenn $\alpha=5\%$.
+\end{definition}
+
+\begin{definition}[Multiple linear regression]
+The model for multiple linear regression is of the form
+\begin{equation}
+	\begin{aligned}
+		y_i&=\beta_0+\beta_1x_1+...+\beta_px_p+\epsilon_i \\
+		Y&=\beta_0+\beta_1X_1+...+\beta_pX_p+\epsilon.
+	\end{aligned}
+\end{equation}
+It seems to me as if this were the same as any linear regression method (e.g. OLS, Ridge, Lasso), but with multiple explained variables. According to STATS 202 "Multiple linear regression answers questions such as: Is at least one of the variables $X$ useful for predicting the outcome $Y$; Which subset of the predictors is most important; How good is a linear model for these data and Given a set of predictor values, what is a likely value for $Y$, and how accurate is this prediction?
+\end{definition}
+
+\begin{definition}[Logistic regression]
+Logistic regression is a model used to predict probabilities, such as $P(default=yes | balance)$. The plot shows us that for low incomes it is close to $0$ and for high incomes close to $1$. Our logistic function has the following form
+
+\begin{equation}
+p(X)=\frac{e^{\beta_0+\beta_1X}}{1+e^{\beta_0+\beta_1X}}.
+\end{equation}
+We use the bayes theorem for classification.
+\end{definition}
+
+\begin{definition}[Ridge regression]
+Is a shrinkage method of linear regression because it aims to shrink the weight of the coefficient by penalising high values. We call it a shrinkage penalty and it is denoted as $\lambda\sum_{j}^{}\beta_j^2$, where $\lambda$ is called a tuning parameter.
+\end{definition}
+
+\begin{definition}[Lasso regression]
+The lasso is a relatively recent alternative to ridge regression that overcomes its disadvantage, that it will always include all predictors, meaning the coefficients only go close to but never reach zero. The lasso penalty is only slightly different from its predecessor: $\lambda\sum_{j}^{}|\beta_j|$.
+\end{definition}
+
+\begin{definition}[Null hypothesis]
+A null hypothesis (often written as $H_0$) is a default scientific assumption stating that there is no real effect, change, or relationship between variables in a study.
+\end{definition}
+
+\end{document}
